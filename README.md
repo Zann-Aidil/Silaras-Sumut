@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="./frontend/public/banner.png" width="800" alt="Silaras Banner"></a></p>
+
 
 <p align="center">
 <a href="https://vitejs.dev" target="_blank"><img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite"></a>
