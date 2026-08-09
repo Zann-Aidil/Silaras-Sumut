@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <!-- Bright Blue Gradient -->
+    <linearGradient id="silarasGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    
+    <!-- Dark Blue Navy Gradient -->
+    <linearGradient id="silarasGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="70%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Accent Cyan Gradient -->
+    <linearGradient id="silarasGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+
+  <!-- Pixel Grid Geometric Tech 'S' Mark -->
+  <!-- Top Right Pixel Block -->
+  <rect x="76" y="16" width="24" height="24" rx="6" fill="url(#silarasGrad3)" />
+
+  <!-- Top Main Curve Bar -->
+  <path d="M 32 16 H 64 C 70.627 16 76 21.373 76 28 V 40 H 48 C 41.373 40 36 45.373 36 52 V 56 H 20 V 28 C 20 21.373 25.373 16 32 16 Z" fill="url(#silarasGrad1)" />
+
+  <!-- Middle Connector Sweep -->
+  <path d="M 36 52 C 36 45.373 41.373 40 48 40 H 84 C 90.627 40 96 45.373 96 52 V 80 C 96 86.627 90.627 92 84 92 H 60 L 36 68 V 52 Z" fill="url(#silarasGrad2)" />
+
+  <!-- Bottom Main Curve Bar -->
+  <path d="M 84 92 H 52 C 45.373 92 40 86.627 40 80 V 68 H 68 C 74.627 68 80 62.627 80 56 V 52 H 96 V 80 C 96 86.627 90.627 92 84 92 Z" fill="url(#silarasGrad1)" />
+
+  <!-- Bottom Left Pixel Block -->
+  <rect x="20" y="80" width="24" height="24" rx="6" fill="url(#silarasGrad2)" />
+
+  <!-- Inner Negative Space Curve (Smooth S Line) -->
+  <path d="M 76 40 C 76 46.627 70.627 52 64 52 H 48 C 41.373 52 36 57.373 36 64 C 36 70.627 41.373 76 48 76 H 64" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+</svg>
