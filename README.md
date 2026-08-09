@@ -1,3 +1,10 @@
+<p align="center"><a href="#" target="_blank"><img src="./frontend/public/banner.png" width="800" alt="Silaras Banner"></a></p>
+
+<p align="center">
+<a href="https://vitejs.dev" target="_blank"><img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite"></a>
+<a href="https://react.dev" target="_blank"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"></a>
+</p>
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
