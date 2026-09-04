@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Check, AlertCircle, Search, RefreshCw, Key, Shield } from 'lucide-react';
 import AdminLayout from '../../components/layout/AdminLayout';
 import api from '../../api/axios';
+import { confirmDialog, toastSuccess, toastError } from '../../utils/swal';
 
 export default function Users() {
   const [data, setData] = useState([]);
@@ -11,7 +12,6 @@ export default function Users() {
   const [filters, setFilters] = useState({ search: '', role: '', status: '', page: 1 });
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [toast, setToast] = useState(null);
 
   // Form state
   const [form, setForm] = useState({
@@ -54,10 +54,7 @@ export default function Users() {
     fetchData();
   }, [fetchData]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const openAddModal = () => {
     setEditingItem(null);
@@ -87,29 +84,35 @@ export default function Users() {
     try {
       if (editingItem) {
         await api.put(`/users/index.php?id=${editingItem.id}`, form);
-        showToast('User berhasil diperbarui');
+        toastSuccess('User berhasil diperbarui');
       } else {
-        if (!form.password) { showToast('Password wajib diisi untuk user baru', 'error'); setSaving(false); return; }
+        if (!form.password) { toastError('Password wajib diisi untuk user baru'); setSaving(false); return; }
         await api.post('/users/index.php', form);
-        showToast('User berhasil ditambahkan');
+        toastSuccess('User berhasil ditambahkan');
       }
       setModalOpen(false);
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menyimpan data', 'error');
+      toastError(err.response?.data?.message || 'Gagal menyimpan data');
     } finally {
       setSaving(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Apakah Anda yakin ingin menonaktifkan user ini?')) return;
+    const result = await confirmDialog(
+      'Nonaktifkan User?',
+      'Apakah Anda yakin ingin menonaktifkan user ini?',
+      'Ya, Nonaktifkan',
+      'Batal'
+    );
+    if (!result.isConfirmed) return;
     try {
       await api.delete(`/users/index.php?id=${id}`);
-      showToast('User dinonaktifkan');
+      toastSuccess('User dinonaktifkan');
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menonaktifkan user', 'error');
+      toastError(err.response?.data?.message || 'Gagal menonaktifkan user');
     }
   };
 
@@ -117,15 +120,6 @@ export default function Users() {
 
   return (
     <AdminLayout title="Manajemen User" subtitle="Kelola data pegawai, staf teknis, dan hak akses sistem">
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       {/* Action and Filter Bar */}
       <div className="filter-bar" style={{ marginBottom: 20 }}>
         <div className="search-input-wrapper" style={{ flex: 1, minWidth: 220 }}>

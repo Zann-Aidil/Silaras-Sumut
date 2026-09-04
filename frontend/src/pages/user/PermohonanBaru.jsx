@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Upload, Send, ArrowLeft, FileText, AlertTriangle } from 'lucide-react';
 import UserLayout from '../../components/layout/UserLayout';
 import api from '../../api/axios';
+import { alertSuccess, alertError, toastError } from '../../utils/swal';
 
 export default function PermohonanBaru() {
   const navigate = useNavigate();
@@ -14,8 +15,6 @@ export default function PermohonanBaru() {
   });
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     api.get('/layanan/index.php?status=aktif')
@@ -27,10 +26,9 @@ export default function PermohonanBaru() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); setSuccess('');
 
-    if (!form.jenis_layanan_id) { setError('Pilih jenis layanan terlebih dahulu'); return; }
-    if (!form.deskripsi_masalah.trim()) { setError('Deskripsi masalah wajib diisi'); return; }
+    if (!form.jenis_layanan_id) { toastError('Pilih jenis layanan terlebih dahulu'); return; }
+    if (!form.deskripsi_masalah.trim()) { toastError('Deskripsi masalah wajib diisi'); return; }
 
     setLoading(true);
     try {
@@ -45,10 +43,10 @@ export default function PermohonanBaru() {
       });
 
       const tiket = res.data.data?.kode_tiket;
-      setSuccess(`Permohonan berhasil diajukan! Kode tiket Anda: ${tiket}`);
-      setTimeout(() => navigate('/permohonan'), 2500);
+      await alertSuccess('Permohonan Berhasil Diajukan!', `Kode tiket Anda: ${tiket}`);
+      navigate('/permohonan');
     } catch (err) {
-      setError(err.response?.data?.message || 'Gagal mengajukan permohonan');
+      alertError('Gagal Mengajukan', err.response?.data?.message || 'Gagal mengajukan permohonan');
     } finally {
       setLoading(false);
     }
@@ -72,16 +70,6 @@ export default function PermohonanBaru() {
           </div>
         </div>
 
-        {error && <div className="alert alert-danger"><AlertTriangle size={16} />{error}</div>}
-        {success && (
-          <div className="alert alert-success">
-            <Send size={16} />
-            <div>
-              <strong>{success.split('!')[0]}!</strong>
-              <p style={{ fontSize: '0.8rem', marginTop: 2 }}>{success.split('! ')[1]}</p>
-            </div>
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           {/* Jenis Layanan */}

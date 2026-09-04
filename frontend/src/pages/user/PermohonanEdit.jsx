@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save, AlertCircle } from 'lucide-react';
 import UserLayout from '../../components/layout/UserLayout';
 import api from '../../api/axios';
+import { toastSuccess, alertError } from '../../utils/swal';
 
 export default function PermohonanEdit() {
   const { id } = useParams();
@@ -43,9 +44,10 @@ export default function PermohonanEdit() {
     setSaving(true);
     try {
       await api.put(`/permohonan/update.php?id=${id}`, form);
+      toastSuccess('Perubahan berhasil disimpan');
       navigate(`/permohonan/${id}`, { replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || 'Gagal menyimpan perubahan');
+      alertError('Gagal Menyimpan', err.response?.data?.message || 'Gagal menyimpan perubahan');
     } finally {
       setSaving(false);
     }

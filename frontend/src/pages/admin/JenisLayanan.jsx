@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Check, AlertCircle, RefreshCw } from 'lucide-react';
 import AdminLayout from '../../components/layout/AdminLayout';
 import api from '../../api/axios';
+import { confirmDelete, toastSuccess, toastError } from '../../utils/swal';
 
 export default function JenisLayanan() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [toast, setToast] = useState(null);
 
   // Form state
   const [form, setForm] = useState({
@@ -32,10 +32,7 @@ export default function JenisLayanan() {
     fetchData();
   }, []);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const openAddModal = () => {
     setEditingItem(null);
@@ -62,43 +59,35 @@ export default function JenisLayanan() {
       if (editingItem) {
         // Edit
         await api.put(`/layanan/index.php?id=${editingItem.id}`, form);
-        showToast('Jenis layanan berhasil diperbarui');
+        toastSuccess('Jenis layanan berhasil diperbarui');
       } else {
         // Add
         await api.post('/layanan/index.php', form);
-        showToast('Jenis layanan berhasil ditambahkan');
+        toastSuccess('Jenis layanan berhasil ditambahkan');
       }
       setModalOpen(false);
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menyimpan data', 'error');
+      toastError(err.response?.data?.message || 'Gagal menyimpan data');
     } finally {
       setSaving(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Apakah Anda yakin ingin menghapus jenis layanan ini?')) return;
+    const result = await confirmDelete('jenis layanan ini');
+    if (!result.isConfirmed) return;
     try {
       await api.delete(`/layanan/index.php?id=${id}`);
-      showToast('Jenis layanan berhasil dihapus');
+      toastSuccess('Jenis layanan berhasil dihapus');
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menghapus jenis layanan', 'error');
+      toastError(err.response?.data?.message || 'Gagal menghapus jenis layanan');
     }
   };
 
   return (
     <AdminLayout title="Jenis Layanan" subtitle="Kelola opsi layanan TI yang tersedia bagi OPD">
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       {/* Header action */}
       <div className="flex justify-between items-center mb-6">
         <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Daftar Layanan</h3>

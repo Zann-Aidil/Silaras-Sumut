@@ -3,6 +3,7 @@ import { User, Shield, Camera, Check, AlertCircle } from 'lucide-react';
 import AdminLayout from '../../components/layout/AdminLayout';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
+import { toastSuccess, toastError } from '../../utils/swal';
 
 export default function AdminProfil() {
   const { user, updateUser } = useAuth();
@@ -12,7 +13,6 @@ export default function AdminProfil() {
   const [fotoPreview, setFotoPreview] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingPass, setLoadingPass] = useState(false);
-  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -21,10 +21,7 @@ export default function AdminProfil() {
     }
   }, [user]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
@@ -38,9 +35,9 @@ export default function AdminProfil() {
       await api.post('/auth/profile.php', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
       const res = await api.get('/auth/profile.php');
       updateUser(res.data.data);
-      showToast('Profil berhasil diperbarui');
+      toastSuccess('Profil berhasil diperbarui');
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal memperbarui profil', 'error');
+      toastError(err.response?.data?.message || 'Gagal memperbarui profil');
     } finally {
       setLoading(false);
     }
@@ -49,7 +46,7 @@ export default function AdminProfil() {
   const handlePassSubmit = async (e) => {
     e.preventDefault();
     if (pass.password_baru !== pass.konfirmasi) {
-      showToast('Password baru tidak sesuai dengan konfirmasi', 'error');
+      toastError('Password baru tidak sesuai dengan konfirmasi');
       return;
     }
     setLoadingPass(true);
@@ -59,10 +56,10 @@ export default function AdminProfil() {
         password_lama: pass.password_lama,
         password_baru: pass.password_baru,
       });
-      showToast('Password berhasil diganti');
+      toastSuccess('Password berhasil diganti');
       setPass({ password_lama: '', password_baru: '', konfirmasi: '' });
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal mengganti password', 'error');
+      toastError(err.response?.data?.message || 'Gagal mengganti password');
     } finally {
       setLoadingPass(false);
     }
@@ -77,15 +74,6 @@ export default function AdminProfil() {
 
   return (
     <AdminLayout title="Profil Admin" subtitle="Kelola data akun dan keamanan login Anda">
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       <div className="grid-3" style={{ gridTemplateColumns: '1fr 2fr', gap: 24 }}>
         {/* Avatar Card */}
         <div className="card text-center" style={{ padding: '32px 20px' }}>

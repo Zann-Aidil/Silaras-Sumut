@@ -3,6 +3,7 @@ import { User, Shield, Key, Camera, Check, AlertCircle } from 'lucide-react';
 import UserLayout from '../../components/layout/UserLayout';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
+import { toastSuccess, toastError } from '../../utils/swal';
 
 export default function Profil() {
   const { user, updateUser } = useAuth();
@@ -22,7 +23,6 @@ export default function Profil() {
   const [fotoPreview, setFotoPreview] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingPass, setLoadingPass] = useState(false);
-  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -39,10 +39,7 @@ export default function Profil() {
     }
   }, [user]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
@@ -64,9 +61,9 @@ export default function Profil() {
       // Ambil profile terbaru untuk update global state
       const res = await api.get('/auth/profile.php');
       updateUser(res.data.data);
-      showToast('Profil berhasil diperbarui');
+      toastSuccess('Profil berhasil diperbarui');
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal memperbarui profil', 'error');
+      toastError(err.response?.data?.message || 'Gagal memperbarui profil');
     } finally {
       setLoading(false);
     }
@@ -75,7 +72,7 @@ export default function Profil() {
   const handlePasswordSubmit = async (e) => {
     e.preventDefault();
     if (pass.password_baru !== pass.konfirmasi) {
-      showToast('Password baru tidak sesuai dengan konfirmasi', 'error');
+      toastError('Password baru tidak sesuai dengan konfirmasi');
       return;
     }
     setLoadingPass(true);
@@ -85,10 +82,10 @@ export default function Profil() {
         password_lama: pass.password_lama,
         password_baru: pass.password_baru,
       });
-      showToast('Password berhasil diganti');
+      toastSuccess('Password berhasil diganti');
       setPass({ password_lama: '', password_baru: '', konfirmasi: '' });
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal mengganti password', 'error');
+      toastError(err.response?.data?.message || 'Gagal mengganti password');
     } finally {
       setLoadingPass(false);
     }
@@ -106,15 +103,6 @@ export default function Profil() {
 
   return (
     <UserLayout>
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '1.5rem', marginBottom: 4 }}>Pengaturan Profil</h1>
