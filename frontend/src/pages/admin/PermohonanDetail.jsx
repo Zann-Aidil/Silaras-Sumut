@@ -6,6 +6,7 @@ import StatusBadge from '../../components/shared/StatusBadge';
 import { formatDate, formatDateTime } from '../../utils/formatDate';
 import { timelineDotClass } from '../../utils/statusColor';
 import api from '../../api/axios';
+import { toastSuccess, toastError } from '../../utils/swal';
 
 export default function AdminPermohonanDetail() {
   const { id } = useParams();
@@ -14,7 +15,6 @@ export default function AdminPermohonanDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState(false);
-  const [toast, setToast] = useState(null);
 
   // Form states for status update
   const [status, setStatus] = useState('');
@@ -40,10 +40,7 @@ export default function AdminPermohonanDetail() {
     fetchDetail();
   }, [fetchDetail]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const handleUpdateStatus = async (e) => {
     e.preventDefault();
@@ -60,11 +57,11 @@ export default function AdminPermohonanDetail() {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      showToast('Status permohonan berhasil diperbarui');
+      toastSuccess('Status permohonan berhasil diperbarui');
       setFileHasil(null);
       fetchDetail(); // Reload detail to show the updated timeline and properties
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal memperbarui status', 'error');
+      toastError(err.response?.data?.message || 'Gagal memperbarui status');
     } finally {
       setUpdating(false);
     }
@@ -97,15 +94,6 @@ export default function AdminPermohonanDetail() {
 
   return (
     <AdminLayout title="Detail & Proses Permohonan" subtitle={`Mengelola Tiket ${data.kode_tiket}`}>
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       {/* Back Button and Quick Info */}
       <div className="flex items-center gap-3 mb-6">
         <button onClick={() => navigate('/admin/permohonan')} className="btn btn-ghost btn-icon">

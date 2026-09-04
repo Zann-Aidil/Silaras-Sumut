@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ClipboardList, LayoutDashboard, User, LogOut, ChevronDown, Plus, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-
+import { confirmLogout } from '../../utils/swal';
 import Logo from '../common/Logo';
 
 export default function UserLayout({ children }) {
@@ -13,6 +13,8 @@ export default function UserLayout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = async () => {
+    const result = await confirmLogout();
+    if (!result.isConfirmed) return;
     await logout();
     navigate('/login');
   };

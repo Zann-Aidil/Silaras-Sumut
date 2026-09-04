@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Check, AlertCircle, Search, RefreshCw } from 'lucide-react';
 import AdminLayout from '../../components/layout/AdminLayout';
 import api from '../../api/axios';
+import { confirmDelete, toastSuccess, toastError } from '../../utils/swal';
 
 export default function Instansi() {
   const [data, setData] = useState([]);
@@ -9,7 +10,6 @@ export default function Instansi() {
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [toast, setToast] = useState(null);
 
   // Form state
   const [form, setForm] = useState({
@@ -34,10 +34,7 @@ export default function Instansi() {
     fetchData();
   }, [search]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+
 
   const openAddModal = () => {
     setEditingItem(null);
@@ -64,42 +61,34 @@ export default function Instansi() {
     try {
       if (editingItem) {
         await api.put(`/instansi/index.php?id=${editingItem.id}`, form);
-        showToast('Instansi/OPD berhasil diperbarui');
+        toastSuccess('Instansi/OPD berhasil diperbarui');
       } else {
         await api.post('/instansi/index.php', form);
-        showToast('Instansi/OPD berhasil ditambahkan');
+        toastSuccess('Instansi/OPD berhasil ditambahkan');
       }
       setModalOpen(false);
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menyimpan data', 'error');
+      toastError(err.response?.data?.message || 'Gagal menyimpan data');
     } finally {
       setSaving(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Hapus Instansi/OPD ini?')) return;
+    const result = await confirmDelete('Instansi/OPD ini');
+    if (!result.isConfirmed) return;
     try {
       await api.delete(`/instansi/index.php?id=${id}`);
-      showToast('Instansi/OPD berhasil dihapus');
+      toastSuccess('Instansi/OPD berhasil dihapus');
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menghapus instansi', 'error');
+      toastError(err.response?.data?.message || 'Gagal menghapus instansi');
     }
   };
 
   return (
     <AdminLayout title="Instansi / OPD" subtitle="Kelola data instansi pemerintahan di lingkungan Pemprovsu">
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>
-            {toast.type === 'error' ? <AlertCircle size={16} /> : <Check size={16} />}
-            {toast.msg}
-          </div>
-        </div>
-      )}
-
       {/* Action Bar */}
       <div className="filter-bar" style={{ justifyContent: 'space-between', marginBottom: 20 }}>
         <div className="search-input-wrapper" style={{ maxWidth: 300, flex: 1 }}>

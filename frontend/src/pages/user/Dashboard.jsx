@@ -55,15 +55,15 @@ export default function UserDashboard() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid-4 mb-6">
-        <StatCard label="Total Permohonan" value={stats.total} color="primary"
-          icon={<ClipboardList size={22} />} />
-        <StatCard label="Pending" value={stats.pending} color="warning"
-          icon={<Clock size={22} />} subtitle="Menunggu penanganan" />
-        <StatCard label="Diproses" value={stats.diproses} color="info"
-          icon={<FileText size={22} />} subtitle="Sedang ditangani" />
-        <StatCard label="Selesai" value={stats.selesai} color="success"
-          icon={<CheckCircle size={22} />} />
+      <div className="grid-4 mb-6" style={{ gap: 20 }}>
+        <StatCard label="TOTAL PERMOHONAN" value={stats.total} color="navy" variant="colored"
+          icon={<ClipboardList size={22} />} trendText="📋 Total diajukan" />
+        <StatCard label="MENUNGGU DIPROSES" value={stats.pending} color="orange" variant="colored"
+          icon={<Clock size={22} />} trendText="⏳ Menunggu penanganan" />
+        <StatCard label="SEDANG DIPROSES" value={stats.diproses} color="cyan" variant="colored"
+          icon={<FileText size={22} />} trendText="⚡ Sedang ditangani" />
+        <StatCard label="SELESAI" value={stats.selesai} color="green" variant="colored"
+          icon={<CheckCircle size={22} />} trendText="✅ Berhasil diselesaikan" />
       </div>
 
       {/* Quick Actions */}

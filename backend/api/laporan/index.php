@@ -66,18 +66,35 @@ switch ($type) {
         sendSuccess($stmt->fetchAll());
 
     case 'by_instansi':
-        $stmt = $db->prepare("
-            SELECT i.nama_instansi, i.singkatan, COUNT(p.id) AS jumlah,
-                   SUM(p.status = 'Selesai') AS selesai
-            FROM permohonan p
-            JOIN users u ON p.user_id = u.id
-            JOIN instansi i ON u.instansi_id = i.id
-            WHERE $dateFilter
-            GROUP BY i.id, i.nama_instansi, i.singkatan
-            ORDER BY jumlah DESC
-        ");
-        $stmt->execute($dateParams);
+        if (isset($_GET['date_from']) && $_GET['date_from'] !== 'all') {
+            $stmt = $db->prepare("
+                SELECT i.id, i.nama_instansi, i.singkatan, COUNT(p.id) AS jumlah,
+                       COALESCE(SUM(p.status = 'Selesai'), 0) AS selesai,
+                       COALESCE(SUM(p.status = 'Pending'), 0) AS pending,
+                       COALESCE(SUM(p.status = 'Diproses'), 0) AS diproses
+                FROM permohonan p
+                JOIN users u ON p.user_id = u.id
+                JOIN instansi i ON u.instansi_id = i.id
+                WHERE $dateFilter
+                GROUP BY i.id, i.nama_instansi, i.singkatan
+                ORDER BY jumlah DESC
+            ");
+            $stmt->execute($dateParams);
+        } else {
+            $stmt = $db->query("
+                SELECT i.id, i.nama_instansi, i.singkatan, COUNT(p.id) AS jumlah,
+                       COALESCE(SUM(p.status = 'Selesai'), 0) AS selesai,
+                       COALESCE(SUM(p.status = 'Pending'), 0) AS pending,
+                       COALESCE(SUM(p.status = 'Diproses'), 0) AS diproses
+                FROM permohonan p
+                JOIN users u ON p.user_id = u.id
+                JOIN instansi i ON u.instansi_id = i.id
+                GROUP BY i.id, i.nama_instansi, i.singkatan
+                ORDER BY jumlah DESC
+            ");
+        }
         sendSuccess($stmt->fetchAll());
+
 
     case 'by_period':
         // Per bulan dalam rentang tanggal

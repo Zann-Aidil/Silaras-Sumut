@@ -5,6 +5,7 @@ import UserLayout from '../../components/layout/UserLayout';
 import StatusBadge from '../../components/shared/StatusBadge';
 import { formatDate } from '../../utils/formatDate';
 import api from '../../api/axios';
+import { confirmDelete, toastSuccess, toastError } from '../../utils/swal';
 
 const STATUSES = ['', 'Pending', 'Diproses', 'Selesai', 'Ditolak'];
 const PRIORITAS = ['', 'Tinggi', 'Sedang', 'Rendah'];
@@ -15,7 +16,6 @@ export default function PermohonanList() {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ search: '', status: '', prioritas: '', page: 1 });
   const [deleteId, setDeleteId] = useState(null);
-  const [toast, setToast] = useState(null);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -36,19 +36,15 @@ export default function PermohonanList() {
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
-  const showToast = (msg, type = 'success') => {
-    setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
-  };
-
   const handleDelete = async (id) => {
-    if (!window.confirm('Hapus permohonan ini?')) return;
+    const result = await confirmDelete('permohonan ini');
+    if (!result.isConfirmed) return;
     try {
       await api.delete(`/permohonan/destroy.php?id=${id}`);
-      showToast('Permohonan berhasil dihapus');
+      toastSuccess('Permohonan berhasil dihapus');
       fetchData();
     } catch (err) {
-      showToast(err.response?.data?.message || 'Gagal menghapus', 'error');
+      toastError(err.response?.data?.message || 'Gagal menghapus');
     }
   };
 
@@ -56,12 +52,6 @@ export default function PermohonanList() {
 
   return (
     <UserLayout>
-      {toast && (
-        <div className="toast-container">
-          <div className={`toast ${toast.type}`}>{toast.msg}</div>
-        </div>
-      )}
-
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>

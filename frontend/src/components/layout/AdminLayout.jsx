@@ -6,6 +6,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 import Logo from '../common/Logo';
+import { confirmLogout } from '../../utils/swal';
 
 const navItems = [
   { to: '/admin/dashboard',  icon: <LayoutDashboard size={18} />, label: 'Dashboard' },
@@ -24,6 +25,8 @@ export default function AdminLayout({ children, title, subtitle }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = async () => {
+    const result = await confirmLogout();
+    if (!result.isConfirmed) return;
     await logout();
     navigate('/login');
   };
