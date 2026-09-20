@@ -1,0 +1,307 @@
+<mxfile host="app.diagrams.net" modified="2026-09-09T09:35:00.000Z" agent="Antigravity" version="21.7.5" type="device">
+  <diagram id="erd-chen-silaras" name="Gambar 3.8 - ERD Notasi Chen SILARAS">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1"
+                   connect="1" arrows="1" fold="1" page="1" pageScale="1"
+                   pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ══════════════════════════════════════
+             1. ENTITAS: INSTANSI (KIRI)
+        ══════════════════════════════════════ -->
+        <mxCell id="ent_instansi" value="INSTANSI"
+                style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;"
+                vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Atribut INSTANSI -->
+        <mxCell id="att_inst_id" value="ID"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fontStyle=4;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="20" y="190" width="60" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_inst_nama" value="Nama Instansi"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="90" y="170" width="95" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_inst_singkat" value="Singkatan"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="195" y="170" width="75" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_inst_alamat" value="Alamat"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="30" y="360" width="70" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_inst_telp" value="No Telp"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="70" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Garis Atribut INSTANSI -->
+        <mxCell id="line_inst_1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="att_inst_id"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_inst_2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="att_inst_nama"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_inst_3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="att_inst_singkat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_inst_4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="att_inst_alamat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_inst_5" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="att_inst_telp"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             RELASI 1: INSTANSI - USERS (MEMILIKI)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_memiliki" value="Memiliki"
+                style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;"
+                vertex="1" parent="1">
+          <mxGeometry x="270" y="262" width="90" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_rel1_a" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_instansi" target="rel_memiliki"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_1a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel1_a"><mxGeometry x="-0.4" relative="1" as="geometry"><mxPoint y="-5"/></mxGeometry></mxCell>
+        <mxCell id="line_rel1_b" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="rel_memiliki" target="ent_users"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_1b" value="N" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel1_b"><mxGeometry x="0.4" relative="1" as="geometry"><mxPoint y="-5"/></mxGeometry></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             2. ENTITAS: USERS / PEGAWAI (TENGAH)
+        ══════════════════════════════════════ -->
+        <mxCell id="ent_users" value="USERS"
+                style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;"
+                vertex="1" parent="1">
+          <mxGeometry x="420" y="270" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Atribut USERS -->
+        <mxCell id="att_u_id" value="ID"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fontStyle=4;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="365" y="180" width="55" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_nama" value="Nama"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="430" y="160" width="65" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_nip" value="NIP"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="505" y="160" width="60" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_email" value="Email"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="560" y="195" width="65" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_pass" value="Password"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="360" y="355" width="75" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_hp" value="No HP"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="445" y="360" width="65" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_u_role" value="Role"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="520" y="355" width="60" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Garis Atribut USERS -->
+        <mxCell id="line_u_1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_id"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_nama"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_nip"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_email"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_5" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_pass"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_6" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_hp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_u_7" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="att_u_role"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             RELASI 2: USERS - PERMOHONAN (MENGAJUKAN)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_mengajukan" value="Mengajukan"
+                style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;"
+                vertex="1" parent="1">
+          <mxGeometry x="615" y="262" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_rel2_a" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="rel_mengajukan"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_2a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel2_a"><mxGeometry x="-0.4" relative="1" as="geometry"><mxPoint y="-5"/></mxGeometry></mxCell>
+        <mxCell id="line_rel2_b" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="rel_mengajukan" target="ent_permohonan"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_2b" value="N" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel2_b"><mxGeometry x="0.4" relative="1" as="geometry"><mxPoint y="-5"/></mxGeometry></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             3. ENTITAS: PERMOHONAN (KANAN)
+        ══════════════════════════════════════ -->
+        <mxCell id="ent_permohonan" value="PERMOHONAN"
+                style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;"
+                vertex="1" parent="1">
+          <mxGeometry x="780" y="270" width="140" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Atribut PERMOHONAN -->
+        <mxCell id="att_p_id" value="ID"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fontStyle=4;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="735" y="175" width="55" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_kode" value="Kode Tiket"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="800" y="155" width="85" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_deskripsi" value="Deskripsi"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="895" y="155" width="75" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_prioritas" value="Prioritas"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="965" y="180" width="70" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_lampiran" value="Lampiran"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="975" y="240" width="75" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_status" value="Status"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="970" y="300" width="65" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_p_hasil" value="Dokumen Hasil"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="940" y="355" width="105" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Garis Atribut PERMOHONAN -->
+        <mxCell id="line_p_1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_id"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_kode"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_deskripsi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_prioritas"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_5" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_lampiran"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_6" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_status"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_p_7" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="att_p_hasil"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             RELASI 3: PERMOHONAN - RIWAYAT_STATUS (MEMILIKI)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_riwayat" value="Mencatat"
+                style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;"
+                vertex="1" parent="1">
+          <mxGeometry x="805" y="420" width="90" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_rel3_a" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="rel_riwayat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_3a" value="1" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel3_a"><mxGeometry x="-0.4" relative="1" as="geometry"><mxPoint x="12" y="-5"/></mxGeometry></mxCell>
+        <mxCell id="line_rel3_b" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="rel_riwayat" target="ent_riwayat_status"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_3b" value="N" style="edgeLabel;html=1;align=right;verticalAlign=top;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel3_b"><mxGeometry x="0.4" relative="1" as="geometry"><mxPoint x="12" y="5"/></mxGeometry></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             4. ENTITAS: RIWAYAT_STATUS (BAWAH KANAN)
+        ══════════════════════════════════════ -->
+        <mxCell id="ent_riwayat_status" value="RIWAYAT STATUS"
+                style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;"
+                vertex="1" parent="1">
+          <mxGeometry x="775" y="560" width="150" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Atribut RIWAYAT_STATUS -->
+        <mxCell id="att_r_id" value="ID"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fontStyle=4;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="695" y="650" width="55" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_r_lama" value="Status Lama"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="760" y="650" width="85" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_r_baru" value="Status Baru"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="855" y="650" width="85" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_r_waktu" value="Waktu"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="945" y="645" width="65" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Garis Atribut RIWAYAT_STATUS -->
+        <mxCell id="line_r_1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat_status" target="att_r_id"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_r_2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat_status" target="att_r_lama"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_r_3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat_status" target="att_r_baru"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_r_4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat_status" target="att_r_waktu"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             RELASI 4: JENIS_LAYANAN - PERMOHONAN (MELIPUTI)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_meliputi" value="Meliputi"
+                style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=12;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;"
+                vertex="1" parent="1">
+          <mxGeometry x="440" y="450" width="90" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_rel4_a" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_jenis_layanan" target="rel_meliputi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="lbl_card_4a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel4_a"><mxGeometry x="-0.4" relative="1" as="geometry"><mxPoint y="-5"/></mxGeometry></mxCell>
+        <mxCell id="line_rel4_b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="rel_meliputi" target="ent_permohonan">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="480"/>
+              <mxPoint x="670" y="293"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_card_4b" value="N" style="edgeLabel;html=1;align=center;verticalAlign=bottom;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" connectable="0" parent="line_rel4_b"><mxGeometry x="0.7" relative="1" as="geometry"><mxPoint y="-8"/></mxGeometry></mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             5. ENTITAS: JENIS_LAYANAN (BAWAH KIRI)
+        ══════════════════════════════════════ -->
+        <mxCell id="ent_jenis_layanan" value="JENIS LAYANAN"
+                style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;"
+                vertex="1" parent="1">
+          <mxGeometry x="220" y="458" width="140" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Atribut JENIS_LAYANAN -->
+        <mxCell id="att_l_id" value="ID"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fontStyle=4;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="150" y="550" width="55" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_l_nama" value="Nama Layanan"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="215" y="555" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_l_desk" value="Deskripsi"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="325" y="555" width="75" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="att_l_waktu" value="Estimasi Waktu"
+                style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=11;fillColor=#ffffff;strokeColor=#000000;"
+                vertex="1" parent="1">
+          <mxGeometry x="410" y="550" width="100" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Garis Atribut JENIS_LAYANAN -->
+        <mxCell id="line_l_1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_jenis_layanan" target="att_l_id"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_l_2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_jenis_layanan" target="att_l_nama"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_l_3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_jenis_layanan" target="att_l_desk"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="line_l_4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="ent_jenis_layanan" target="att_l_waktu"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

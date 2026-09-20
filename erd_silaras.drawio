@@ -1,0 +1,241 @@
+<mxfile host="app.diagrams.net" modified="2026-09-09T02:25:00.000Z" agent="Antigravity" version="21.7.5" type="device">
+  <diagram id="erd-silaras" name="Gambar 3.7 - ERD SILARAS">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1"
+                   connect="1" arrows="1" fold="1" page="1" pageScale="1"
+                   pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ══════════════════════════════════════
+             TABEL 1: INSTANSI
+        ══════════════════════════════════════ -->
+        <mxCell id="t_instansi" value="instansi"
+                style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=12;"
+                vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_1" value="PK | id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=1;" vertex="1" parent="t_instansi">
+          <mxGeometry y="28" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_2" value="     nama_instansi : VARCHAR(150)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="52" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_3" value="     singkatan : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="76" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_4" value="     alamat : TEXT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="100" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_5" value="     no_telp : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="124" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_6" value="     status : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="148" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_inst_7" value="     created_at : TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_instansi">
+          <mxGeometry y="172" width="200" height="24" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             TABEL 2: USERS
+        ══════════════════════════════════════ -->
+        <mxCell id="t_users" value="users"
+                style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=12;"
+                vertex="1" parent="1">
+          <mxGeometry x="320" y="60" width="220" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_1" value="PK | id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=1;" vertex="1" parent="t_users">
+          <mxGeometry y="28" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_2" value="     nama : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="52" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_3" value="     nip : VARCHAR(30)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="76" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_4" value="     email : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="100" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_5" value="     password : VARCHAR(255)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="124" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_6" value="     no_hp : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="148" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_7" value="FK | instansi_id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_users">
+          <mxGeometry y="172" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_8" value="     role : ENUM('user','admin')" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="196" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_u_9" value="     status : ENUM('aktif','nonaktif')" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="220" width="220" height="24" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             TABEL 3: JENIS_LAYANAN
+        ══════════════════════════════════════ -->
+        <mxCell id="t_layanan" value="jenis_layanan"
+                style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=12;"
+                vertex="1" parent="1">
+          <mxGeometry x="840" y="80" width="210" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_1" value="PK | id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=1;" vertex="1" parent="t_layanan">
+          <mxGeometry y="28" width="210" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_2" value="     nama_layanan : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_layanan">
+          <mxGeometry y="52" width="210" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_3" value="     deskripsi : TEXT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_layanan">
+          <mxGeometry y="76" width="210" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_4" value="     estimasi_waktu : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_layanan">
+          <mxGeometry y="100" width="210" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_5" value="     status : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_layanan">
+          <mxGeometry y="124" width="210" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_l_6" value="     created_at : TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_layanan">
+          <mxGeometry y="148" width="210" height="24" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             TABEL 4: PERMOHONAN
+        ══════════════════════════════════════ -->
+        <mxCell id="t_permohonan" value="permohonan"
+                style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=12;"
+                vertex="1" parent="1">
+          <mxGeometry x="580" y="360" width="240" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_1" value="PK | id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=1;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="28" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_2" value="     kode_tiket : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="52" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_3" value="FK | user_id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="76" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_4" value="FK | jenis_layanan_id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="100" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_5" value="     deskripsi_masalah : TEXT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="124" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_6" value="     prioritas : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="148" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_7" value="     lampiran : VARCHAR(255)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="172" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_8" value="     status : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="196" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_9" value="     catatan_admin : TEXT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="220" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_10" value="     dokumen_hasil : VARCHAR(255)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="244" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_11" value="FK | ditangani_oleh : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="268" width="240" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_p_12" value="     created_at : TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_permohonan">
+          <mxGeometry y="292" width="240" height="24" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             TABEL 5: RIWAYAT_STATUS
+        ══════════════════════════════════════ -->
+        <mxCell id="t_riwayat" value="riwayat_status"
+                style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=12;"
+                vertex="1" parent="1">
+          <mxGeometry x="140" y="440" width="220" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_1" value="PK | id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=1;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="28" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_2" value="FK | permohonan_id : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="52" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_3" value="     status_lama : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="76" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_4" value="     status_baru : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="100" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_5" value="     catatan : TEXT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="124" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_6" value="FK | diubah_oleh : INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="148" width="220" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="f_r_7" value="     waktu : DATETIME" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="t_riwayat">
+          <mxGeometry y="172" width="220" height="24" as="geometry"/>
+        </mxCell>
+
+
+        <!-- ══════════════════════════════════════
+             RELASI 1: INSTANSI - USERS (1 to N)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_inst_user" value="1 : N"
+                style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;
+                       strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontStyle=1;
+                       exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;"
+                edge="1" parent="1" source="t_instansi" target="t_users">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ══════════════════════════════════════
+             RELASI 2: USERS - PERMOHONAN (1 to N) (user_id)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_user_perm" value="1 : N&#xa;(mengajukan)"
+                style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;
+                       strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontStyle=1;
+                       exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;"
+                edge="1" parent="1" source="t_users" target="t_permohonan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ══════════════════════════════════════
+             RELASI 3: JENIS_LAYANAN - PERMOHONAN (1 to N)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_layanan_perm" value="1 : N"
+                style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;
+                       strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontStyle=1;
+                       exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;"
+                edge="1" parent="1" source="t_layanan" target="t_permohonan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ══════════════════════════════════════
+             RELASI 4: PERMOHONAN - RIWAYAT_STATUS (1 to N)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_perm_riwayat" value="1 : N"
+                style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;
+                       strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontStyle=1;
+                       exitX=0;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;"
+                edge="1" parent="1" source="t_permohonan" target="t_riwayat">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ══════════════════════════════════════
+             RELASI 5: USERS - PERMOHONAN (1 to N) (ditangani_oleh)
+        ══════════════════════════════════════ -->
+        <mxCell id="rel_admin_perm" value="1 : N (menangani)"
+                style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;
+                       strokeColor=#555555;strokeWidth=1;dashed=1;fontFamily=Times New Roman;fontSize=10;
+                       exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;"
+                edge="1" parent="1" source="t_users" target="t_permohonan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
